@@ -5,7 +5,7 @@
   "main": "dist/src/almanac.js",
   "files": [
     "dist",
-    "js"
+    "src"
   ],
   "scripts": {
     "build": "webpack src/almanac.js --out-dir dist/src/almanac_bundle.js",
