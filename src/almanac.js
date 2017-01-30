@@ -1,10 +1,12 @@
-import React from 'react';
-import classNames from 'classnames';
+import React, { PropTypes } from 'react';
 
-console.log('hi')
+const Almanac = () => {
+    console.log('in almanac component')
+    return(
+        <p className="almanac-main">
+        {'ALMANACCC'}
+        </p>
+    );
+};
 
-// export default function Almanac() {
-//     return(
-//         console.log('hi')
-//     )
-// }
+export default Almanac;

@@ -2,14 +2,14 @@
   "name": "almanac",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/main.js",
+  "main": "dist/src/almanac.js",
   "files": [
     "dist",
     "js"
   ],
   "scripts": {
-    "build": "webpack src/almanac.js dist/almanac_bundle.js",
-    "start": "webpack-dev-server"
+    "build": "webpack src/almanac.js --out-dir dist/src/almanac_bundle.js",
+    "start": "webpack-dev-server --display-error-details"
   },
   "repository": {
     "type": "git",

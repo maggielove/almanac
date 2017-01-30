@@ -9,7 +9,7 @@ var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
 module.exports = {
   entry:  ['./src/almanac.js'],
   output: {
-    path: __dirname + '/dist',
+    path: __dirname + '/dist/src/',
     filename: 'almanac_bundle.js'
 },
  module: {
@@ -17,7 +17,7 @@ module.exports = {
          {
              test: /\.js$/,
              exclude: /node_modules/,
-             loader: "babel!babel"
+             loader: "babel-loader"
          }
      ]
  },
