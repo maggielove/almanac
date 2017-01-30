@@ -1,12 +1,13 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import { render } from 'react-dom';
+import Date from './components/Date';
 
-const Almanac = () => {
-    console.log('in almanac component')
-    return(
-        <p className="almanac-main">
-        {'ALMANACCC'}
-        </p>
-    );
-};
+class Almanac extends React.Component {
+    render() {
+        return (
+            <Date />
+        )
+    }
+}
 
-export default Almanac;
+render(<Almanac />, document.getElementById('react-root'));
