@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { render } from 'react-dom';
 import Today from './components/Today';
+import Weather from './components/Weather';
 
-class Almanac extends React.Component {
+class Almanac extends Component {
     render() {
         return (
-            <Today />
+            <div>
+                <Today />
+                <Weather />
+            </div>
         )
     }
 }
