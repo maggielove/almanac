@@ -6,8 +6,8 @@ export default class Weather extends Component {
         super(props);
 
         this.state = {
-            highToday: 0,
-            lowToday: 0,
+            highToday: '',
+            lowToday: '',
             weatherTodayText: '',
             errorMessage: ''
         }
