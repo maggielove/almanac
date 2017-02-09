@@ -5,26 +5,21 @@ const WEATHER_API_PATH = 'http://api.wunderground.com/api/';
 //TODO: change to use geolocation
 const FORECAST_QUERY = '/forecast/q/NY/New_York.json';
 
-const getKeys = () => new Promise((resolve, reject) => {
-    // console.log('getting keeyss');
-    return axios.get('/keys')
-    .then((res) => {
-        console.log('res from hitting /keys ', res);
-        WEATHER_API_KEY = res;
-    }).catch((err) => {
-        console.log('error!! ', err);
-    })
+const hitWeatherApi = (key) => new Promise((resolve, reject) => {
+    return axios.get(WEATHER_API_PATH + key + FORECAST_QUERY)
+        .then((res) => {
+            resolve(res);
+        }).catch(() => {
+            reject({ message: 'Hmm, something went wrong.' });
+        })
 });
 
-export const getForecast = () => new Promise((resolve, reject) => {
-    getKeys()
+export const getForecast = () => {
+    return axios.get('/keys')
         .then((res) => {
-            console.log('res ' + res);
+            WEATHER_API_KEY = res.data;
+            return hitWeatherApi(WEATHER_API_KEY);
+        }).catch((err) => {
+            console.log('error: ', err);
         })
-        // return axios.post(WEATHER_API_PATH + WEATHER_API_KEY + FORECAST_QUERY)
-        // .then(function(response){
-        //     resolve(response);
-        // }).catch(function() {
-        //     reject({ message: 'Hmm, something went wrong.' });
-        // });
-});
+}
