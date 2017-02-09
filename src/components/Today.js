@@ -4,32 +4,33 @@ const Today = () => {
     let date, weekDayNumber, weekday, monthNumber, month, day, year, fullDate;
 
     date = new Date();
-    weekDayNumber = date.getDate();
+    weekDayNumber = date.getDay();
     monthNumber = date.getMonth();
     day = date.getDate();
     year = date.getFullYear();
 
     const getWeekday = () => {
+        console.log('weekday ', weekDayNumber);
         switch (weekDayNumber) {
-            case 6:
+            case 0:
                 weekday = 'Monday';
                 break;
-            case 0:
+            case 1:
                 weekday = 'Tuesday';
                 break;
-            case 1:
+            case 2:
                 weekday = 'Wednesday';
                 break;
-            case 2:
+            case 3:
                 weekday = 'Thursday';
                 break;
-            case 3:
+            case 4:
                 weekday = 'Friday';
                 break;
-            case 4:
+            case 5:
                 weekday = 'Saturday';
                 break;
-            case 5:
+            case 6:
                 weekday = 'Sunday';
                 break;
         }
