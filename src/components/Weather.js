@@ -6,9 +6,9 @@ export default class Weather extends Component {
         super(props);
 
         this.state = {
-            highToday: '',
-            lowToday: '',
-            weatherTodayText: '',
+            highs: [],
+            lows: [],
+            weatherText: [],
             errorMessage: ''
         }
 
@@ -28,10 +28,17 @@ export default class Weather extends Component {
     }
 
     handleSuccess(response) {
+        const textForecast = response.data.forecast.txt_forecast;
+        const simpleForecast = response.data.forecast.simpleforecast;
+        const forecastToday = simpleForecast.forecastday[0];
+        const firstThreeDayForecast = simpleForecast.forecastday[1];
+        const secondThreeDayForecast = simpleForecast.forecastday[2];
+        const thirdThreeDayForecast = simpleForecast.forecastday[3];
+
         this.setState({
-            highToday: response.data.forecast.simpleforecast.forecastday[0].high.fahrenheit,
-            lowToday: response.data.forecast.simpleforecast.forecastday[0].low.fahrenheit,
-            weatherTodayText: response.data.forecast.txt_forecast.forecastday[0].fcttext
+            highs: [ forecastToday.high.fahrenheit, firstThreeDayForecast.high.fahrenheit, secondThreeDayForecast.high.fahrenheit, thirdThreeDayForecast.high.fahrenheit ],
+            lows: [ forecastToday.low.fahrenheit, firstThreeDayForecast.low.fahrenheit, secondThreeDayForecast.low.fahrenheit, thirdThreeDayForecast.low.fahrenheit ],
+            weatherText: [ textForecast.forecastday[0].fcttext, textForecast.forecastday[1].fcttext, textForecast.forecastday[2].fcttext, textForecast.forecastday[3].fcttext ]
         })
     }
 
@@ -42,13 +49,30 @@ export default class Weather extends Component {
     }
 
     render() {
-        const { highToday, lowToday, weatherTodayText, errorMessage } = this.state;
+        const { highs, lows, weatherText, errorMessage } = this.state;
         return (
-            <div className="weather">
-                {highToday && <p>{'High: ' + highToday + '°F'}</p>}
-                {lowToday && <p>{ 'Low: ' +  lowToday + '°F'}</p>}
-                {weatherTodayText && <p>{weatherTodayText}</p>}
-                {errorMessage && <p>{errorMessage}</p>}
+            <div className="Weather">
+                <div className="Weather Weather--today">
+                    {highs[0] && <p>{'High: ' + highs[0] + '°F'}</p>}
+                    {lows[0] && <p>{ 'Low: ' +  lows[0] + '°F'}</p>}
+                    {weatherText[0] && <p>{weatherText[0]}</p>}
+                    {errorMessage && <p>{errorMessage}</p>}
+                </div>
+                <div className="Weather Weather--three-day">
+                    {highs[1] && <p>{'High: ' + highs[1] + '°F'}</p>}
+                    {lows[1] && <p>{ 'Low: ' +  lows[1] + '°F'}</p>}
+                    {weatherText[1] && <p>{weatherText[1]}</p>}
+                </div>
+                <div className="Weather Weather--three-day">
+                    {highs[2] && <p>{'High: ' + highs[2] + '°F'}</p>}
+                    {lows[2] && <p>{ 'Low: ' +  lows[2] + '°F'}</p>}
+                    {weatherText[2] && <p>{weatherText[2]}</p>}
+                </div>
+                <div className="Weather Weather--three-day">
+                    {highs[3] && <p>{'High: ' + highs[3] + '°F'}</p>}
+                    {lows[3] && <p>{ 'Low: ' +  lows[3] + '°F'}</p>}
+                    {weatherText[3] && <p>{weatherText[3]}</p>}
+                </div>
             </div>
         );
     }
