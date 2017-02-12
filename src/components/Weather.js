@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getForecast } from '../utils/getForecast';
 import { getNextThreeDays } from '../utils/getDate';
+import '../stylesheets/Weather.scss';
 
 export default class Weather extends Component {
     constructor(props){
@@ -55,26 +56,27 @@ export default class Weather extends Component {
 
         return (
             <div className="Weather">
-                <div className="Weather Weather--today">
+                <div className="Weather--day Weather--today">
+                    <p className="Weather--day__title">{'Today'}</p>
                     {highs[0] && <p>{'High: ' + highs[0] + '°F'}</p>}
                     {lows[0] && <p>{ 'Low: ' +  lows[0] + '°F'}</p>}
                     {weatherText[0] && <p>{weatherText[0]}</p>}
                     {errorMessage && <p>{errorMessage}</p>}
                 </div>
-                <div className="Weather Weather--three-day">
-                    {nextThreeDays[0] && <p>{nextThreeDays[0]}</p>}
+                <div className="Weather--day">
+                    {nextThreeDays[0] && <p className="Weather--day__title">{nextThreeDays[0]}</p>}
                     {highs[1] && <p>{'High: ' + highs[1] + '°F'}</p>}
                     {lows[1] && <p>{ 'Low: ' +  lows[1] + '°F'}</p>}
                     {weatherText[1] && <p>{weatherText[1]}</p>}
                 </div>
-                <div className="Weather Weather--three-day">
-                    {nextThreeDays[1] && <p>{nextThreeDays[1]}</p>}
+                <div className="Weather--day">
+                    {nextThreeDays[1] && <p className="Weather--day__title">{nextThreeDays[1]}</p>}
                     {highs[2] && <p>{'High: ' + highs[2] + '°F'}</p>}
                     {lows[2] && <p>{ 'Low: ' +  lows[2] + '°F'}</p>}
                     {weatherText[2] && <p>{weatherText[2]}</p>}
                 </div>
-                <div className="Weather Weather--three-day">
-                    {nextThreeDays[2] && <p>{nextThreeDays[2]}</p>}
+                <div className="Weather--day">
+                    {nextThreeDays[2] && <p className="Weather--day__title">{nextThreeDays[2]}</p>}
                     {highs[3] && <p>{'High: ' + highs[3] + '°F'}</p>}
                     {lows[3] && <p>{ 'Low: ' +  lows[3] + '°F'}</p>}
                     {weatherText[3] && <p>{weatherText[3]}</p>}
