@@ -1,6 +1,6 @@
 # almanac
 
-##To Develop Locally
+## To Develop Locally
 
 From the root, run `npm install`
 
